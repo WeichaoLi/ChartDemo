@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef UIColor*(^BeginSelect)(NSIndexPath *indexPath, CGPoint point);
-typedef void(^DidSelect)(NSIndexPath *indexPath);
-
 @interface CDBar : UIControl
 
 /**
@@ -22,12 +19,8 @@ typedef void(^DidSelect)(NSIndexPath *indexPath);
 
 @property (nonatomic, assign) BOOL      canTouch;
 @property (nonatomic, assign) BOOL      canMove;
-/**
- *  默认可以点击
- */
-@property (nonatomic, copy) BeginSelect   beginSelect;
-@property (nonatomic, copy) DidSelect   didSelect;
 
+@property (nonatomic, strong) UIColor   *selectColor;
 
 - (void)highlightWithColor:(UIColor *)color;
 - (void)recover;

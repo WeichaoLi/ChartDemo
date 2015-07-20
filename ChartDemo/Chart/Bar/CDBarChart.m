@@ -230,20 +230,17 @@
             /**
              *  点击事件
              */
-            __block typeof(bar) blockBar = bar;
-            [bar setBeginSelect:^ (NSIndexPath *indexPath, CGPoint point) {
-                return [UIColor blueColor];
-            }];
-//            [bar addTarget:self action:@selector(clickBar:) forControlEvents:UIControlEventTouchUpInside];
-            [bar setDidSelect:^ (NSIndexPath *indexPath) {
-                self.selectBar = blockBar;
-                if (_delegate && [_delegate respondsToSelector:@selector(chartBarDidSelectAtIndex:)]) {
-                    [_delegate chartBarDidSelectAtIndex:indexPath];
-                }
-                if (_delegate && [_delegate respondsToSelector:@selector(popViewAtIndex:)]) {
-                    [_delegate popViewAtIndex:indexPath];
-                }
-            }];
+            [bar addTarget:self action:@selector(clickBar:) forControlEvents:UIControlEventTouchUpInside];
+//            __block typeof(bar) blockBar = bar;
+//            [bar setDidSelect:^ (NSIndexPath *indexPath) {
+//                self.selectBar = blockBar;
+//                if (_delegate && [_delegate respondsToSelector:@selector(chartBarDidSelectAtIndex:)]) {
+//                    [_delegate chartBarDidSelectAtIndex:indexPath];
+//                }
+//                if (_delegate && [_delegate respondsToSelector:@selector(popViewAtIndex:)]) {
+//                    [_delegate popViewAtIndex:indexPath];
+//                }
+//            }];
             
             [self.barSet addObject:bar];
             

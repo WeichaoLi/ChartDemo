@@ -100,13 +100,11 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if (_canTouch) {
-        CGPoint point = [[touches anyObject] locationInView:self];
-        if (CGPathContainsPoint(_chartLine.path, NULL, point, NO)) {            
-            
-            if (_beginSelect) {
-                [self highlightWithColor:_beginSelect(_indexPath, point)];
-            }
-        }
+//        CGPoint point = [[touches anyObject] locationInView:self];
+//        if (CGPathContainsPoint(_chartLine.path, NULL, point, NO)) {
+//        }
+        [super touchesBegan:touches withEvent:event];
+        [self highlightWithColor:[UIColor blueColor]];
     }
     if (_canMove) {
         [self.nextResponder touchesBegan:touches withEvent:event];
@@ -121,9 +119,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     if (_canTouch && _originColor) {
-        if (_didSelect) {
-            _didSelect(_indexPath);
-        }
+        [super touchesEnded:touches withEvent:event];
         [self recover];
     }
     if (_canMove) {
@@ -133,8 +129,9 @@
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     if (_canTouch && _originColor) {
+        [super touchesCancelled:touches withEvent:event];
         [self recover];
-    }
+    }    
     if (_canMove) {
         [self.nextResponder touchesCancelled:touches withEvent:event];
     }
