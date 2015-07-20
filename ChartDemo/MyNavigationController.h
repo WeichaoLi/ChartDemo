@@ -1,0 +1,15 @@
+//
+//  MyNavigationController.h
+//  ChartDemo
+//
+//  Created by 李伟超 on 15/7/16.
+//  Copyright (c) 2015年 LWC. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface MyNavigationController : UINavigationController
+
+@property(nonatomic) NSUInteger orietation;
+
+@end
