@@ -29,7 +29,7 @@
     self.viewControllerArray = [NSMutableArray arrayWithObjects:
                             @"BarViewController",
                             @"BarViewController1",
-                            @"",
+                            @"LineViewController",
                             @"",
                             @"",
                             nil];

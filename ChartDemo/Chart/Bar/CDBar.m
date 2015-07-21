@@ -64,24 +64,20 @@
     [progressline addLineToPoint:CGPointMake(CGRectGetWidth(self.frame), (1 - grade) * self.frame.size.height)];
     [progressline addLineToPoint:CGPointMake(CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
     
-//    [progressline setLineWidth:1.0];
-//    [progressline setLineCapStyle:kCGLineCapRound];
+    _chartLine.frame = self.bounds;
     _chartLine.path = progressline.CGPath;
     _chartLine.fillMode = kCAFillModeForwards;
     _chartLine.lineJoin = kCALineJoinBevel;
     _chartLine.lineWidth = 1.0;
-//    _chartLine.fillColor = [UIColor clearColor].CGColor;
     _chartLine.fillColor = [self.barColor CGColor];
     
-//    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"frame.height"];
-//    pathAnimation.duration = 1.5;
-//    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//    pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
-//    pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
-//    pathAnimation.autoreverses = NO;
-//    [_chartLine addAnimation:pathAnimation forKey:@"height"];
-
-    _chartLine.strokeEnd = 2.0;
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"bounds"];
+    pathAnimation.duration = 0.6;
+    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    pathAnimation.fromValue = [NSValue valueWithCGRect:CGRectMake(0, 0, CGRectGetWidth(self.frame), 0)];
+    pathAnimation.toValue = [NSValue valueWithCGRect:self.bounds];
+    pathAnimation.autoreverses = NO;
+    [_chartLine addAnimation:pathAnimation forKey:@"bounds"];
 }
 
 #pragma mark - public Method
@@ -112,9 +108,9 @@
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (_canMove) {
+//    if (_canMove) {
         [self.nextResponder touchesMoved:touches withEvent:event];
-    }
+//    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B31CBDB1B5DDBB9007DA817 /* CDDot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBDA1B5DDBB9007DA817 /* CDDot.m */; };
+		1B31CBDE1B5DDBD0007DA817 /* CDLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBDD1B5DDBD0007DA817 /* CDLineChart.m */; };
+		1B31CBE11B5DECD7007DA817 /* LineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBE01B5DECD7007DA817 /* LineViewController.m */; };
 		1BD804381B575659002AD952 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD804371B575659002AD952 /* main.m */; };
 		1BD8043B1B575659002AD952 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8043A1B575659002AD952 /* AppDelegate.m */; };
 		1BD8043E1B575659002AD952 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8043D1B575659002AD952 /* ViewController.m */; };
@@ -37,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B31CBD91B5DDBB9007DA817 /* CDDot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDDot.h; sourceTree = "<group>"; };
+		1B31CBDA1B5DDBB9007DA817 /* CDDot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDDot.m; sourceTree = "<group>"; };
+		1B31CBDC1B5DDBD0007DA817 /* CDLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDLineChart.h; sourceTree = "<group>"; };
+		1B31CBDD1B5DDBD0007DA817 /* CDLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDLineChart.m; sourceTree = "<group>"; };
+		1B31CBDF1B5DECD7007DA817 /* LineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineViewController.h; sourceTree = "<group>"; };
+		1B31CBE01B5DECD7007DA817 /* LineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineViewController.m; sourceTree = "<group>"; };
 		1BD804321B575659002AD952 /* ChartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD804361B575659002AD952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BD804371B575659002AD952 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -125,6 +134,8 @@
 				1BD8047A1B5775E6002AD952 /* BarViewController.m */,
 				1BD804901B591EBF002AD952 /* BarViewController1.h */,
 				1BD804911B591EBF002AD952 /* BarViewController1.m */,
+				1B31CBDF1B5DECD7007DA817 /* LineViewController.h */,
+				1B31CBE01B5DECD7007DA817 /* LineViewController.m */,
 				1BD8046F1B577464002AD952 /* CommonViewController */,
 				1BD8043F1B575659002AD952 /* Main.storyboard */,
 				1BD804421B575659002AD952 /* Images.xcassets */,
@@ -198,6 +209,10 @@
 		1BD8045F1B57574E002AD952 /* Line */ = {
 			isa = PBXGroup;
 			children = (
+				1B31CBD91B5DDBB9007DA817 /* CDDot.h */,
+				1B31CBDA1B5DDBB9007DA817 /* CDDot.m */,
+				1B31CBDC1B5DDBD0007DA817 /* CDLineChart.h */,
+				1B31CBDD1B5DDBD0007DA817 /* CDLineChart.m */,
 			);
 			path = Line;
 			sourceTree = "<group>";
@@ -315,13 +330,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B31CBDB1B5DDBB9007DA817 /* CDDot.m in Sources */,
 				1BD8046E1B577311002AD952 /* CDBarChart.m in Sources */,
 				1BD804921B591EBF002AD952 /* BarViewController1.m in Sources */,
 				1BD804761B577464002AD952 /* BasicViewController.m in Sources */,
 				1BD8047B1B5775E6002AD952 /* BarViewController.m in Sources */,
 				1BD8047E1B5786EE002AD952 /* CDLabel.m in Sources */,
+				1B31CBE11B5DECD7007DA817 /* LineViewController.m in Sources */,
 				1BD804781B577464002AD952 /* LLViewController.m in Sources */,
 				1BD8046B1B5772D5002AD952 /* CDBar.m in Sources */,
+				1B31CBDE1B5DDBD0007DA817 /* CDLineChart.m in Sources */,
 				1BD8043E1B575659002AD952 /* ViewController.m in Sources */,
 				1BD804681B5765EB002AD952 /* PopoverView.m in Sources */,
 				1BD804631B575AC2002AD952 /* MyNavigationController.m in Sources */,
@@ -528,6 +546,7 @@
 				1BD804571B57565A002AD952 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1BD804581B57565A002AD952 /* Build configuration list for PBXNativeTarget "ChartDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +555,7 @@
 				1BD8045A1B57565A002AD952 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
