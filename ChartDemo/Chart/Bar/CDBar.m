@@ -53,8 +53,8 @@
 }
 
 -(void)setGrade:(float)grade {
-    if (grade==0)
-        grade = 2.5/CGRectGetHeight(self.frame);
+    if (grade <= 0)
+        return;
     
     _grade = grade;
     UIBezierPath *progressline = [UIBezierPath bezierPath];
@@ -63,6 +63,7 @@
     [progressline addLineToPoint:CGPointMake(0, (1 - grade) * self.frame.size.height)];
     [progressline addLineToPoint:CGPointMake(CGRectGetWidth(self.frame), (1 - grade) * self.frame.size.height)];
     [progressline addLineToPoint:CGPointMake(CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
+    [progressline closePath];
     
     _chartLine.frame = self.bounds;
     _chartLine.path = progressline.CGPath;
@@ -115,7 +116,9 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     if (_canTouch && _originColor) {
-        [super touchesEnded:touches withEvent:event];
+        if (_grade > 0) {
+            [super touchesEnded:touches withEvent:event];
+        }        
         [self recover];
     }
     if (_canMove) {

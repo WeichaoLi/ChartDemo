@@ -10,7 +10,9 @@
 #import "CDBarChart.h"
 #import "BarViewController1.h"
 
-@interface BarViewController ()<ChartBarDelegate, ChartBarDataSource>
+@interface BarViewController ()<ChartBarDelegate, ChartBarDataSource> {
+    CDBarChart *barChart;
+}
 
 @end
 
@@ -19,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CDBarChart *barChart = [[CDBarChart alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200) WithType:DidSelectTypeTouch];
+    barChart = [[CDBarChart alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200) WithType:DidSelectTypeTouch];
     barChart.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     barChart.didSelectType = DidSelectTypeTouch;
     barChart.delegate = self;
@@ -27,6 +29,11 @@
     
     
     [self.view addSubview:barChart];    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [barChart reloadData];
 }
 
 - (BOOL)shouldAutorotate {
@@ -44,7 +51,7 @@
 #pragma mark - ChartBarDataSource
 
 - (NSArray *)arrayWithXCoordinateValue {
-    return @[@"10/5", @"10/6", @"10/7", @"10/8", @"10/9", @"10/10", @"10/11", @"10/12"];
+    return @[@"10/5", @"10/6", @"10/7", @"10/8", @"10/9", @"10/10", @"10/11", @"10/12", @"10/13", @"10/14"];
 }
 
 - (CGRange)rangeWithYCoordinateValue {
@@ -52,7 +59,7 @@
 }
 
 - (NSArray *)barYValues {
-    NSArray *yValue1 = @[@"13", @"10", @"15", @"19", @"12", @"14", @"13", @"16"];
+    NSArray *yValue1 = @[@"", @"9", @"15", @"19", @"", @"", @"13", @"16", @"17", @"11"];
     return @[yValue1];
 }
 
@@ -63,6 +70,10 @@
 - (NSArray *)barColorsInChart {
     return @[CDRed];
 }
+
+//- (CGFloat)barWidth {
+//    return 30;
+//}
 
 #pragma mark - ChartBarDelegate
 

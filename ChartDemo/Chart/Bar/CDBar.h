@@ -20,7 +20,7 @@
 @property (nonatomic, assign) BOOL      canTouch;
 @property (nonatomic, assign) BOOL      canMove;
 
-@property (nonatomic, strong) UIColor   *selectColor;
+//@property (nonatomic, strong) UIColor   *selectColor;
 
 - (void)highlightWithColor:(UIColor *)color;
 - (void)recover;

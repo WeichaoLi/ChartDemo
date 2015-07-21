@@ -101,6 +101,8 @@
     [self reloadData];
 }
 
+#pragma mark - create UI
+
 /**
  *  Y轴
  */
@@ -121,7 +123,7 @@
     
     NSUInteger _verticalCount = [_dataSource countInYCoordinate];
     
-    max = (max < _verticalCount) ? _verticalCount : max;
+//    max = (max < _verticalCount) ? _verticalCount : max;
     
     if (self.showRange) {
         _yValueMin = (int)min;
@@ -218,6 +220,9 @@
             
             bar.barColor = [_colors objectAtIndex:i];
             bar.grade = (value - _yValueMin) / (_yValueMax - _yValueMin);
+            if (value == _yValueMin && value > 0) {
+                bar.grade = 0.01;
+            }
             bar.indexPath = [NSIndexPath indexPathForItem:idx inSection:i];
             if (_didSelectType == 0) {
                 bar.canTouch = YES;
@@ -231,16 +236,6 @@
              *  点击事件
              */
             [bar addTarget:self action:@selector(clickBar:) forControlEvents:UIControlEventTouchUpInside];
-//            __block typeof(bar) blockBar = bar;
-//            [bar setDidSelect:^ (NSIndexPath *indexPath) {
-//                self.selectBar = blockBar;
-//                if (_delegate && [_delegate respondsToSelector:@selector(chartBarDidSelectAtIndex:)]) {
-//                    [_delegate chartBarDidSelectAtIndex:indexPath];
-//                }
-//                if (_delegate && [_delegate respondsToSelector:@selector(popViewAtIndex:)]) {
-//                    [_delegate popViewAtIndex:indexPath];
-//                }
-//            }];
             
             [self.barSet addObject:bar];
             
@@ -252,8 +247,12 @@
 #pragma mark - public Method
 
 - (void)reloadData {
-    [self.barSet makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//    [self.barSet makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.yLables makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [myScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+
+    self.yLables = nil;
+    self.barSet = nil;
     
     [self strokeChart];
 }

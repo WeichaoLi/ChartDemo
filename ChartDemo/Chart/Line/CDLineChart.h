@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ChartConfig.h"
 
+#define CDLabelHeight       10.0
+#define CDYLabelwidth       30.0
+
 @protocol ChartLineDataSource, ChartLineDelegate;
 
 @interface CDLineChart : UIView
@@ -47,7 +50,7 @@
 - (CGRange)rangeWithYCoordinateValue;
 
 /**
- *  bar的颜色
+ *  折线的颜色
  */
 - (NSArray *)LineColorsInChart;
 
@@ -63,7 +66,7 @@
 @optional
 
 /**
- *  点击选中
+ *  点击选中dot
  */
 - (void)charLineDidSelectDotAtIndex:(NSIndexPath *)indexPath;
 - (void)popViewAtIndex:(NSIndexPath *)indexPath;
@@ -74,7 +77,7 @@
 - (UIColor *)dotColorMoveToIndex:(NSIndexPath *)indexPath AtPoint:(CGPoint)Point;
 
 /**
- *  结束滑动选中后，是否恢复bar的颜色
+ *  结束滑动选中后，是否恢复Line的颜色
  */
 - (BOOL)restoreWhenEndMove;
 
