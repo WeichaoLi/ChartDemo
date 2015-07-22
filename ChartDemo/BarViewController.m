@@ -71,9 +71,9 @@
     return @[CDRed];
 }
 
-//- (CGFloat)barWidth {
-//    return 30;
-//}
+- (CGFloat)barWidth {
+    return 30;
+}
 
 #pragma mark - ChartBarDelegate
 

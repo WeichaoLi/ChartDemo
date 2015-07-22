@@ -62,7 +62,7 @@
 
 - (NSArray *)barYValues {
     NSArray *yValue1 = @[@"13", @"10", @"15", @"19", @"12", @"14", @"13", @"16", @"15", @"12", @"19"];
-    return @[yValue1, yValue1];
+    return @[yValue1];
 }
 
 - (NSUInteger)countInYCoordinate {

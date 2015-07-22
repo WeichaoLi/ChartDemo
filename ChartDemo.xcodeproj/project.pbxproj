@@ -11,6 +11,8 @@
 		1B31CBDE1B5DDBD0007DA817 /* CDLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBDD1B5DDBD0007DA817 /* CDLineChart.m */; };
 		1B31CBE11B5DECD7007DA817 /* LineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBE01B5DECD7007DA817 /* LineViewController.m */; };
 		1B31CBE41B5F37D9007DA817 /* CDScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBE31B5F37D9007DA817 /* CDScrollView.m */; };
+		1B31CC481B5F92AF007DA817 /* CDCakeChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CC471B5F92AF007DA817 /* CDCakeChart.m */; };
+		1B31CC4B1B5F92D7007DA817 /* CakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CC4A1B5F92D7007DA817 /* CakeViewController.m */; };
 		1BD804381B575659002AD952 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD804371B575659002AD952 /* main.m */; };
 		1BD8043B1B575659002AD952 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8043A1B575659002AD952 /* AppDelegate.m */; };
 		1BD8043E1B575659002AD952 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8043D1B575659002AD952 /* ViewController.m */; };
@@ -49,6 +51,10 @@
 		1B31CBE01B5DECD7007DA817 /* LineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineViewController.m; sourceTree = "<group>"; };
 		1B31CBE31B5F37D9007DA817 /* CDScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDScrollView.m; sourceTree = "<group>"; };
 		1B31CBE51B5F3A86007DA817 /* CDScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDScrollView.h; sourceTree = "<group>"; };
+		1B31CC461B5F92AF007DA817 /* CDCakeChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDCakeChart.h; sourceTree = "<group>"; };
+		1B31CC471B5F92AF007DA817 /* CDCakeChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDCakeChart.m; sourceTree = "<group>"; };
+		1B31CC491B5F92D7007DA817 /* CakeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CakeViewController.h; sourceTree = "<group>"; };
+		1B31CC4A1B5F92D7007DA817 /* CakeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CakeViewController.m; sourceTree = "<group>"; };
 		1BD804321B575659002AD952 /* ChartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD804361B575659002AD952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BD804371B575659002AD952 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -139,6 +145,8 @@
 				1BD804911B591EBF002AD952 /* BarViewController1.m */,
 				1B31CBDF1B5DECD7007DA817 /* LineViewController.h */,
 				1B31CBE01B5DECD7007DA817 /* LineViewController.m */,
+				1B31CC491B5F92D7007DA817 /* CakeViewController.h */,
+				1B31CC4A1B5F92D7007DA817 /* CakeViewController.m */,
 				1BD8046F1B577464002AD952 /* CommonViewController */,
 				1BD8043F1B575659002AD952 /* Main.storyboard */,
 				1BD804421B575659002AD952 /* Images.xcassets */,
@@ -207,6 +215,8 @@
 		1BD8045E1B57574E002AD952 /* Cake */ = {
 			isa = PBXGroup;
 			children = (
+				1B31CC461B5F92AF007DA817 /* CDCakeChart.h */,
+				1B31CC471B5F92AF007DA817 /* CDCakeChart.m */,
 			);
 			path = Cake;
 			sourceTree = "<group>";
@@ -336,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B31CBDB1B5DDBB9007DA817 /* CDDot.m in Sources */,
+				1B31CC481B5F92AF007DA817 /* CDCakeChart.m in Sources */,
 				1BD8046E1B577311002AD952 /* CDBarChart.m in Sources */,
 				1BD804921B591EBF002AD952 /* BarViewController1.m in Sources */,
 				1BD804761B577464002AD952 /* BasicViewController.m in Sources */,
@@ -343,6 +354,7 @@
 				1BD8047E1B5786EE002AD952 /* CDLabel.m in Sources */,
 				1B31CBE11B5DECD7007DA817 /* LineViewController.m in Sources */,
 				1BD804781B577464002AD952 /* LLViewController.m in Sources */,
+				1B31CC4B1B5F92D7007DA817 /* CakeViewController.m in Sources */,
 				1BD8046B1B5772D5002AD952 /* CDBar.m in Sources */,
 				1B31CBE41B5F37D9007DA817 /* CDScrollView.m in Sources */,
 				1B31CBDE1B5DDBD0007DA817 /* CDLineChart.m in Sources */,

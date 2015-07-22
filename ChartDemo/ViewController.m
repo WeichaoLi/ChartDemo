@@ -22,7 +22,7 @@
                   @"柱状图1",
                   @"柱状图2",
                   @"折现图",
-                  @"",
+                  @"饼图",
                   @"",
                   nil];
 
@@ -30,7 +30,7 @@
                             @"BarViewController",
                             @"BarViewController1",
                             @"LineViewController",
-                            @"",
+                            @"CakeViewController",
                             @"",
                             nil];
 }
