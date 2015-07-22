@@ -68,8 +68,7 @@
 /**
  *  点击选中dot
  */
-- (void)charLineDidSelectDotAtIndex:(NSIndexPath *)indexPath;
-- (void)popViewAtIndex:(NSIndexPath *)indexPath;
+- (void)chartLineDidSelectDotAtIndex:(NSIndexPath *)indexPath;
 
 /**
  *  滑动选中，返回选中的颜色

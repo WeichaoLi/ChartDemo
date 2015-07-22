@@ -15,10 +15,20 @@
 
 @end
 
-@implementation LineViewController
+@implementation LineViewController {
+    UILabel *label;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
+    label.center = CGPointMake(self.view.center.x, 20);
+    label.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.backgroundColor = [UIColor blackColor];
+    label.textColor = [UIColor whiteColor];
+    [self.view addSubview:label];
     
     lineChart = [[CDLineChart alloc] initWithFrame:CGRectMake(0, 50, CGRectGetWidth(self.view.frame), 200)];
     lineChart.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
@@ -57,5 +67,19 @@
 }
 
 #pragma mark - ChartLineDelegate
+
+- (void)chartLineDidSelectDotAtIndex:(NSIndexPath *)indexPath {
+    CD_NSLog(@"%d",indexPath.row);
+    label.text = [NSString stringWithFormat:@"第 %d 个", indexPath.row];
+}
+
+- (UIColor *)dotColorMoveToIndex:(NSIndexPath *)indexPath AtPoint:(CGPoint)Point {
+    label.text = [NSString stringWithFormat:@"第 %d 个", indexPath.row];
+    return [UIColor clearColor];
+}
+
+- (BOOL)restoreWhenEndMove {
+    return YES;
+}
 
 @end

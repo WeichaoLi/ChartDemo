@@ -9,6 +9,7 @@
 #import "CDLineChart.h"
 #import "CDLabel.h"
 #import "CDDot.h"
+#import "CDScrollView.h"
 
 @interface CDLineChart () {
     UIScrollView *myScrollView;
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NSMutableSet  *yLables;
 @property (strong, nonatomic) NSMutableSet  *dots;
 @property (strong, nonatomic) NSMutableSet  *lines;
+@property (strong, nonatomic) CAShapeLayer *tagLine;
 
 @end
 
@@ -28,7 +30,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(CDYLabelwidth, 0, frame.size.width - CDYLabelwidth, frame.size.height)];
+        myScrollView = [[CDScrollView alloc] initWithFrame:CGRectMake(CDYLabelwidth, 0, frame.size.width - CDYLabelwidth, frame.size.height)];
         myScrollView.showsHorizontalScrollIndicator = NO;
         myScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 //        myScrollView.backgroundColor = [UIColor yellowColor];
@@ -64,6 +66,26 @@
     return _dots;
 }
 
+- (CAShapeLayer *)tagLine {
+    if (!_tagLine) {
+        _tagLine = [[CAShapeLayer alloc] init];
+        
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathMoveToPoint(path, NULL, 0, CDLabelHeight);
+        CGPathAddLineToPoint(path, NULL, 0, CGRectGetMaxY(myScrollView.frame) - 2*CDLabelHeight);
+        
+        _tagLine.path = path;
+        CGPathRelease(path);
+        
+        _tagLine.strokeColor = [UIColor redColor].CGColor;
+        _tagLine.lineWidth = 1.0;
+        _tagLine.fillColor = [UIColor clearColor].CGColor;
+        
+        [myScrollView.layer addSublayer:_tagLine];
+    }
+    return _tagLine;
+}
+
 - (NSMutableSet *)lines {
     if (!_lines) {
         _lines = [NSMutableSet set];
@@ -77,6 +99,8 @@
     [self.yLables makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [myScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
+    self.dots = nil;
+    self.lines = nil;
     self.yLables = nil;
     
     [self strokeChart];
@@ -126,9 +150,10 @@
             /**
              *  点
              */
-            CDDot *dot = [[CDDot alloc] initWithFrame:CGRectMake(0, 0, 20, 20) DotColor:CDRed];
+            CDDot *dot = [[CDDot alloc] initWithFrame:CGRectMake(0, 0, 23, 23) DotColor:CDRed];
+//            dot.backgroundColor = CD_ColorHex(0xE2C54C);
             dot.center = CGPointMake(x, y);
-            dot.dotType = DOTTypeRectangle;
+            dot.dotType = DOTTypeHollowCircle;
             dot.indexPath = [NSIndexPath indexPathForRow:idx inSection:i];
             [dot addTarget:self action:@selector(clickDot:) forControlEvents:UIControlEventTouchUpInside];
             [myScrollView addSubview:dot];
@@ -151,23 +176,19 @@
  *  Y轴
  */
 - (void)setupYCoordinateWith:(NSArray *)yLabels {
-    NSInteger max = 0;
-    NSInteger min = 100000000;
+    float max = 0;
+    float min = 100000000;
     for (NSArray *array in yLabels) {
-        for (NSString *valueStr in array) {
-            NSInteger value = [valueStr integerValue];
-            if (value > max) {
-                max = value;
-            }
-            if (value < min) {
-                min = value;
-            }
-        }
+        /**
+         *  最大、最小值
+         */
+        max = [[array valueForKeyPath:@"@max.floatValue"] floatValue];
+        min = [[array valueForKeyPath:@"@min.floatValue"] floatValue];
     }
     
     NSUInteger _verticalCount = [_dataSource countInYCoordinate];
     
-    max = (max < _verticalCount) ? _verticalCount : max;
+//    max = (max < _verticalCount) ? _verticalCount : max;
     
     if (self.showRange) {
         _yValueMin = (int)min;
@@ -279,7 +300,66 @@
 #pragma mark - touch event
 
 - (void)clickDot:(CDDot *)dot {
-    CD_NSLog(@"%d", dot.indexPath.row);
+    if (_delegate && [_delegate respondsToSelector:@selector(chartLineDidSelectDotAtIndex:)]) {
+        [_delegate chartLineDidSelectDotAtIndex:dot.indexPath];
+    }
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint point = [[touches anyObject] locationInView:myScrollView];
+    [self.dots enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+        CDDot *dot = (CDDot *)obj;
+        
+        CGRect rect = dot.frame;
+        rect.origin.y = CDLabelHeight;
+        rect.size.height = CGRectGetMaxY(myScrollView.frame);
+        
+        if (CGRectContainsPoint(rect, point)) {
+            self.tagLine.position = CGPointMake(dot.center.x, 0);
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(dotColorMoveToIndex:AtPoint:)]) {
+                [_delegate dotColorMoveToIndex:dot.indexPath AtPoint:dot.center];
+            }
+            return ;
+        }
+    }];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint point = [[touches anyObject] locationInView:myScrollView];
+    self.tagLine.position = CGPointMake(point.x, 0);
+    [self.dots enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+        CDDot *dot = (CDDot *)obj;
+
+        CGRect rect = dot.frame;
+        rect.origin.y = CDLabelHeight;
+        rect.size.height = CGRectGetMaxY(myScrollView.frame);
+        
+        if (CGRectContainsPoint(rect, point)) {            
+            if (_delegate && [_delegate respondsToSelector:@selector(dotColorMoveToIndex:AtPoint:)]) {
+                [_delegate dotColorMoveToIndex:dot.indexPath AtPoint:dot.center];
+            }
+            return ;
+        }        
+    }];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (_delegate && [_delegate respondsToSelector:@selector(restoreWhenEndMove)]) {
+        if ([_delegate restoreWhenEndMove]) {
+            [self.tagLine removeFromSuperlayer];
+            self.tagLine =  nil;
+        };
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (_delegate && [_delegate respondsToSelector:@selector(restoreWhenEndMove)]) {
+        if ([_delegate restoreWhenEndMove]) {
+            [self.tagLine removeFromSuperlayer];
+            self.tagLine =  nil;
+        };
+    }
 }
 
 @end

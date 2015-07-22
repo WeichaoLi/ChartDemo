@@ -76,7 +76,6 @@ typedef NS_ENUM(NSInteger, DidSelectType){
  *  点击选中
  */
 - (void)chartBarDidSelectAtIndex:(NSIndexPath *)indexPath;
-- (void)popViewAtIndex:(NSIndexPath *)indexPath;
 
 /**
  *  滑动选中，返回选中的颜色

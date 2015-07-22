@@ -10,6 +10,7 @@
 		1B31CBDB1B5DDBB9007DA817 /* CDDot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBDA1B5DDBB9007DA817 /* CDDot.m */; };
 		1B31CBDE1B5DDBD0007DA817 /* CDLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBDD1B5DDBD0007DA817 /* CDLineChart.m */; };
 		1B31CBE11B5DECD7007DA817 /* LineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBE01B5DECD7007DA817 /* LineViewController.m */; };
+		1B31CBE41B5F37D9007DA817 /* CDScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBE31B5F37D9007DA817 /* CDScrollView.m */; };
 		1BD804381B575659002AD952 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD804371B575659002AD952 /* main.m */; };
 		1BD8043B1B575659002AD952 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8043A1B575659002AD952 /* AppDelegate.m */; };
 		1BD8043E1B575659002AD952 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8043D1B575659002AD952 /* ViewController.m */; };
@@ -46,6 +47,8 @@
 		1B31CBDD1B5DDBD0007DA817 /* CDLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDLineChart.m; sourceTree = "<group>"; };
 		1B31CBDF1B5DECD7007DA817 /* LineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineViewController.h; sourceTree = "<group>"; };
 		1B31CBE01B5DECD7007DA817 /* LineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineViewController.m; sourceTree = "<group>"; };
+		1B31CBE31B5F37D9007DA817 /* CDScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDScrollView.m; sourceTree = "<group>"; };
+		1B31CBE51B5F3A86007DA817 /* CDScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDScrollView.h; sourceTree = "<group>"; };
 		1BD804321B575659002AD952 /* ChartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD804361B575659002AD952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BD804371B575659002AD952 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 				1BD804671B5765EB002AD952 /* PopoverViewCompatibility.h */,
 				1BD8047C1B5786EE002AD952 /* CDLabel.h */,
 				1BD8047D1B5786EE002AD952 /* CDLabel.m */,
+				1B31CBE51B5F3A86007DA817 /* CDScrollView.h */,
+				1B31CBE31B5F37D9007DA817 /* CDScrollView.m */,
 				1BD8045D1B57574E002AD952 /* Bar */,
 				1BD8045E1B57574E002AD952 /* Cake */,
 				1BD8045F1B57574E002AD952 /* Line */,
@@ -339,6 +344,7 @@
 				1B31CBE11B5DECD7007DA817 /* LineViewController.m in Sources */,
 				1BD804781B577464002AD952 /* LLViewController.m in Sources */,
 				1BD8046B1B5772D5002AD952 /* CDBar.m in Sources */,
+				1B31CBE41B5F37D9007DA817 /* CDScrollView.m in Sources */,
 				1B31CBDE1B5DDBD0007DA817 /* CDLineChart.m in Sources */,
 				1BD8043E1B575659002AD952 /* ViewController.m in Sources */,
 				1BD804681B5765EB002AD952 /* PopoverView.m in Sources */,

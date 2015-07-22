@@ -78,10 +78,6 @@
 #pragma mark - ChartBarDelegate
 
 - (void)chartBarDidSelectAtIndex:(NSIndexPath *)indexPath {
-//    CD_NSLog(@"%@", indexPath);
-}
-
-- (void)popViewAtIndex:(NSIndexPath *)indexPath {
     CD_NSLog(@"%d",indexPath.row);
     BarViewController1 *bvc1 = [[BarViewController1 alloc] init];
     [self.navigationController pushViewController:bvc1 animated:YES];

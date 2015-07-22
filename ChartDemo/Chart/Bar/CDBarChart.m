@@ -10,26 +10,7 @@
 #import "CDBar.h"
 #import "CDLabel.h"
 #import "PopoverView.h"
-
-@interface UIScrollView (Touches)
-
-@end
-
-@implementation UIScrollView (Touches)
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.nextResponder touchesBegan:touches withEvent:event];
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.nextResponder touchesMoved:touches withEvent:event];
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.nextResponder touchesEnded:touches withEvent:event];
-}
-
-@end
+#import "CDScrollView.h"
 
 @interface CDBarChart () {
     UIScrollView *myScrollView;
@@ -52,7 +33,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(CDYLabelwidth, 0, frame.size.width - CDYLabelwidth, frame.size.height)];
+        myScrollView = [[CDScrollView alloc] initWithFrame:CGRectMake(CDYLabelwidth, 0, frame.size.width - CDYLabelwidth, frame.size.height)];
         myScrollView.showsHorizontalScrollIndicator = NO;
         myScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         myScrollView.backgroundColor = [UIColor clearColor];
@@ -107,18 +88,14 @@
  *  Y轴
  */
 - (void)setupYCoordinateWith:(NSArray *)yLabels {
-    NSInteger max = 0;
-    NSInteger min = 100000000;
+    float max = 0;
+    float min = 100000000;
     for (NSArray *array in yLabels) {
-        for (NSString *valueStr in array) {
-            NSInteger value = [valueStr integerValue];
-            if (value > max) {
-                max = value;
-            }
-            if (value < min) {
-                min = value;
-            }
-        }
+        /**
+         *  最大、最小值
+         */
+        max = [[array valueForKeyPath:@"@max.floatValue"] floatValue];
+        min = [[array valueForKeyPath:@"@min.floatValue"] floatValue];
     }
     
     NSUInteger _verticalCount = [_dataSource countInYCoordinate];
@@ -264,9 +241,6 @@
     if (_delegate && [_delegate respondsToSelector:@selector(chartBarDidSelectAtIndex:)]) {
         [_delegate chartBarDidSelectAtIndex:bar.indexPath];
     }
-    if (_delegate && [_delegate respondsToSelector:@selector(popViewAtIndex:)]) {
-        [_delegate popViewAtIndex:bar.indexPath];
-    }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -306,6 +280,18 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (_didSelectType == DidSelectTypeMove && _delegate && [_delegate respondsToSelector:@selector(restoreBarWhenEndMove)]) {
+        if ([_delegate restoreBarWhenEndMove]) {
+            /**
+             *  还原
+             */
+            [self.selectBar recover];
+            self.selectBar = nil;
+        };
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     if (_didSelectType == DidSelectTypeMove && _delegate && [_delegate respondsToSelector:@selector(restoreBarWhenEndMove)]) {
         if ([_delegate restoreBarWhenEndMove]) {
             /**
