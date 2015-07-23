@@ -9,7 +9,6 @@
 #import "CDLineChart.h"
 #import "CDLabel.h"
 #import "CDDot.h"
-#import "CDScrollView.h"
 
 @interface CDLineChart () {
     UIScrollView *myScrollView;
@@ -30,11 +29,13 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        myScrollView = [[CDScrollView alloc] initWithFrame:CGRectMake(CDYLabelwidth, 0, frame.size.width - CDYLabelwidth, frame.size.height)];
+        myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(CDYLabelwidth, 0, frame.size.width - CDYLabelwidth, frame.size.height)];
         myScrollView.showsHorizontalScrollIndicator = NO;
         myScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//        myScrollView.backgroundColor = [UIColor yellowColor];
         [self addSubview:myScrollView];
+        
+        UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewLongPressed:)];
+        [myScrollView addGestureRecognizer:longPressGestureRecognizer];
         
         _showRange = YES;
         _showYCoordinate = YES;
@@ -297,6 +298,50 @@
     }
 }
 
+#pragma mark - gesture
+
+- (void)scrollViewLongPressed:(UILongPressGestureRecognizer *)longPressGestureRecognizer {
+    CD_NSLog(@"=====");
+    CGPoint point = [longPressGestureRecognizer locationInView:myScrollView];
+    switch (longPressGestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan:
+        case UIGestureRecognizerStateChanged: {
+            
+            self.tagLine.position = CGPointMake(point.x, 0);
+            [self.dots enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+                CDDot *dot = (CDDot *)obj;
+                
+                CGRect rect = dot.frame;
+                rect.origin.y = CDLabelHeight;
+                rect.size.height = CGRectGetMaxY(myScrollView.frame);
+                
+                if (CGRectContainsPoint(rect, point)) {
+                    if (_delegate && [_delegate respondsToSelector:@selector(dotColorMoveToIndex:AtPoint:)]) {
+                        [_delegate dotColorMoveToIndex:dot.indexPath AtPoint:dot.center];
+                    }
+                    return ;
+                }        
+            }];
+        }
+            break;
+            
+            
+        case UIGestureRecognizerStateEnded:
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(restoreWhenEndMove)]) {
+                if ([_delegate restoreWhenEndMove]) {
+                    [self.tagLine removeFromSuperlayer];
+                    self.tagLine =  nil;
+                };
+            }
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
 #pragma mark - touch event
 
 - (void)clickDot:(CDDot *)dot {
@@ -305,61 +350,67 @@
     }
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    CGPoint point = [[touches anyObject] locationInView:myScrollView];
-    [self.dots enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-        CDDot *dot = (CDDot *)obj;
-        
-        CGRect rect = dot.frame;
-        rect.origin.y = CDLabelHeight;
-        rect.size.height = CGRectGetMaxY(myScrollView.frame);
-        
-        if (CGRectContainsPoint(rect, point)) {
-            self.tagLine.position = CGPointMake(dot.center.x, 0);
-            
-            if (_delegate && [_delegate respondsToSelector:@selector(dotColorMoveToIndex:AtPoint:)]) {
-                [_delegate dotColorMoveToIndex:dot.indexPath AtPoint:dot.center];
-            }
-            return ;
-        }
-    }];
-}
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+//    return self;
+//}
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    CGPoint point = [[touches anyObject] locationInView:myScrollView];
-    self.tagLine.position = CGPointMake(point.x, 0);
-    [self.dots enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-        CDDot *dot = (CDDot *)obj;
-
-        CGRect rect = dot.frame;
-        rect.origin.y = CDLabelHeight;
-        rect.size.height = CGRectGetMaxY(myScrollView.frame);
-        
-        if (CGRectContainsPoint(rect, point)) {            
-            if (_delegate && [_delegate respondsToSelector:@selector(dotColorMoveToIndex:AtPoint:)]) {
-                [_delegate dotColorMoveToIndex:dot.indexPath AtPoint:dot.center];
-            }
-            return ;
-        }        
-    }];
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (_delegate && [_delegate respondsToSelector:@selector(restoreWhenEndMove)]) {
-        if ([_delegate restoreWhenEndMove]) {
-            [self.tagLine removeFromSuperlayer];
-            self.tagLine =  nil;
-        };
-    }
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (_delegate && [_delegate respondsToSelector:@selector(restoreWhenEndMove)]) {
-        if ([_delegate restoreWhenEndMove]) {
-            [self.tagLine removeFromSuperlayer];
-            self.tagLine =  nil;
-        };
-    }
-}
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    CGPoint point = [[touches anyObject] locationInView:myScrollView];
+//    [self.dots enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+//        CDDot *dot = (CDDot *)obj;
+//        
+//        CGRect rect = dot.frame;
+//        rect.origin.y = CDLabelHeight;
+//        rect.size.height = CGRectGetMaxY(myScrollView.frame);
+//        
+//        if (CGRectContainsPoint(rect, point)) {
+//            [myScrollView resignFirstResponder];
+//
+//            self.tagLine.position = CGPointMake(dot.center.x, 0);
+//            
+//            if (_delegate && [_delegate respondsToSelector:@selector(dotColorMoveToIndex:AtPoint:)]) {
+//                [_delegate dotColorMoveToIndex:dot.indexPath AtPoint:dot.center];
+//            }
+//            return ;
+//        }
+//    }];
+//}
+//
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+//    CGPoint point = [[touches anyObject] locationInView:myScrollView];
+//    self.tagLine.position = CGPointMake(point.x, 0);
+//    [self.dots enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+//        CDDot *dot = (CDDot *)obj;
+//
+//        CGRect rect = dot.frame;
+//        rect.origin.y = CDLabelHeight;
+//        rect.size.height = CGRectGetMaxY(myScrollView.frame);
+//        
+//        if (CGRectContainsPoint(rect, point)) {            
+//            if (_delegate && [_delegate respondsToSelector:@selector(dotColorMoveToIndex:AtPoint:)]) {
+//                [_delegate dotColorMoveToIndex:dot.indexPath AtPoint:dot.center];
+//            }
+//            return ;
+//        }        
+//    }];
+//}
+//
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+//    if (_delegate && [_delegate respondsToSelector:@selector(restoreWhenEndMove)]) {
+//        if ([_delegate restoreWhenEndMove]) {
+//            [self.tagLine removeFromSuperlayer];
+//            self.tagLine =  nil;
+//        };
+//    }
+//}
+//
+//- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+//    if (_delegate && [_delegate respondsToSelector:@selector(restoreWhenEndMove)]) {
+//        if ([_delegate restoreWhenEndMove]) {
+//            [self.tagLine removeFromSuperlayer];
+//            self.tagLine =  nil;
+//        };
+//    }
+//}
 
 @end

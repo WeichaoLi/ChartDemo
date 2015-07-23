@@ -16,6 +16,10 @@
     CFTimeInterval _duration;
 }
 
+- (void)reloadData {
+    
+}
+
 /**
  *  从圆弧的起始点开始画线
  *

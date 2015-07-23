@@ -12,13 +12,26 @@
 
 @interface CDCakeChart : UIView
 
+@property (nonatomic, assign) id<ChartCakeDataSource>   dataSource;
+@property (nonatomic, assign) id<ChartCakeDeledate>     delegate;
+
+
+- (void)reloadData;
+
 @end
 
 @protocol ChartCakeDataSource <NSObject>
 
+- (NSArray *)proportionsInEveryArc;
 
+- (NSArray *)colorsInEachOfArc;
 
 @optional
+
+/**
+ *  起点弧度, 0 ~ 2*PI
+ */
+- (CGFloat)startAngleInCircle;
 
 @end
 

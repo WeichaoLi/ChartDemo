@@ -13,7 +13,7 @@
 #import "CDScrollView.h"
 
 @interface CDBarChart () {
-    UIScrollView *myScrollView;
+    CDScrollView *myScrollView;
     
     CGFloat _xLabelWidth;
     float _yValueMax;
