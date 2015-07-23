@@ -98,6 +98,7 @@
     NSString *ViewControllerClass = _viewControllerArray[indexPath.row];
     if (ViewControllerClass.length) {
         
+//        BasicViewController *viewController = [[NSClassFromString(ViewControllerClass) alloc] initWithNibName:ViewControllerClass bundle:nil];
         BasicViewController *viewController = [[NSClassFromString(ViewControllerClass) alloc] init];
         [self transmitValueWhenPushWith:viewController AtIndex:indexPath];
         viewController.title = _dataArray[indexPath.row];

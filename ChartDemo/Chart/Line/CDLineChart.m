@@ -151,7 +151,7 @@
             /**
              *  点
              */
-            CDDot *dot = [[CDDot alloc] initWithFrame:CGRectMake(0, 0, 23, 23) DotColor:CDRed];
+            CDDot *dot = [[CDDot alloc] initWithFrame:CGRectMake(0, 0, _xLabelWidth *2/3, _xLabelWidth*2/3) DotColor:CDRed];
 //            dot.backgroundColor = CD_ColorHex(0xE2C54C);
             dot.center = CGPointMake(x, y);
             dot.dotType = DOTTypeHollowCircle;
@@ -301,21 +301,20 @@
 #pragma mark - gesture
 
 - (void)scrollViewLongPressed:(UILongPressGestureRecognizer *)longPressGestureRecognizer {
-    CD_NSLog(@"=====");
+    
     CGPoint point = [longPressGestureRecognizer locationInView:myScrollView];
     switch (longPressGestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:
         case UIGestureRecognizerStateChanged: {
             
-            self.tagLine.position = CGPointMake(point.x, 0);
             [self.dots enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
                 CDDot *dot = (CDDot *)obj;
                 
                 CGRect rect = dot.frame;
                 rect.origin.y = CDLabelHeight;
                 rect.size.height = CGRectGetMaxY(myScrollView.frame);
-                
                 if (CGRectContainsPoint(rect, point)) {
+                    self.tagLine.position = CGPointMake(dot.center.x, 0);
                     if (_delegate && [_delegate respondsToSelector:@selector(dotColorMoveToIndex:AtPoint:)]) {
                         [_delegate dotColorMoveToIndex:dot.indexPath AtPoint:dot.center];
                     }
@@ -325,8 +324,8 @@
         }
             break;
             
-            
         case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled:
             
             if (_delegate && [_delegate respondsToSelector:@selector(restoreWhenEndMove)]) {
                 if ([_delegate restoreWhenEndMove]) {
@@ -342,75 +341,12 @@
     }
 }
 
-#pragma mark - touch event
+#pragma mark - dot action
 
 - (void)clickDot:(CDDot *)dot {
     if (_delegate && [_delegate respondsToSelector:@selector(chartLineDidSelectDotAtIndex:)]) {
         [_delegate chartLineDidSelectDotAtIndex:dot.indexPath];
     }
 }
-
-//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-//    return self;
-//}
-
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    CGPoint point = [[touches anyObject] locationInView:myScrollView];
-//    [self.dots enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-//        CDDot *dot = (CDDot *)obj;
-//        
-//        CGRect rect = dot.frame;
-//        rect.origin.y = CDLabelHeight;
-//        rect.size.height = CGRectGetMaxY(myScrollView.frame);
-//        
-//        if (CGRectContainsPoint(rect, point)) {
-//            [myScrollView resignFirstResponder];
-//
-//            self.tagLine.position = CGPointMake(dot.center.x, 0);
-//            
-//            if (_delegate && [_delegate respondsToSelector:@selector(dotColorMoveToIndex:AtPoint:)]) {
-//                [_delegate dotColorMoveToIndex:dot.indexPath AtPoint:dot.center];
-//            }
-//            return ;
-//        }
-//    }];
-//}
-//
-//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-//    CGPoint point = [[touches anyObject] locationInView:myScrollView];
-//    self.tagLine.position = CGPointMake(point.x, 0);
-//    [self.dots enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-//        CDDot *dot = (CDDot *)obj;
-//
-//        CGRect rect = dot.frame;
-//        rect.origin.y = CDLabelHeight;
-//        rect.size.height = CGRectGetMaxY(myScrollView.frame);
-//        
-//        if (CGRectContainsPoint(rect, point)) {            
-//            if (_delegate && [_delegate respondsToSelector:@selector(dotColorMoveToIndex:AtPoint:)]) {
-//                [_delegate dotColorMoveToIndex:dot.indexPath AtPoint:dot.center];
-//            }
-//            return ;
-//        }        
-//    }];
-//}
-//
-//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-//    if (_delegate && [_delegate respondsToSelector:@selector(restoreWhenEndMove)]) {
-//        if ([_delegate restoreWhenEndMove]) {
-//            [self.tagLine removeFromSuperlayer];
-//            self.tagLine =  nil;
-//        };
-//    }
-//}
-//
-//- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-//    if (_delegate && [_delegate respondsToSelector:@selector(restoreWhenEndMove)]) {
-//        if ([_delegate restoreWhenEndMove]) {
-//            [self.tagLine removeFromSuperlayer];
-//            self.tagLine =  nil;
-//        };
-//    }
-//}
 
 @end

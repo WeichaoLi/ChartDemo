@@ -35,6 +35,7 @@
     if (self = [super initWithFrame:frame]) {
         myScrollView = [[CDScrollView alloc] initWithFrame:CGRectMake(CDYLabelwidth, 0, frame.size.width - CDYLabelwidth, frame.size.height)];
         myScrollView.showsHorizontalScrollIndicator = NO;
+        myScrollView.bounces = NO;
         myScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         myScrollView.backgroundColor = [UIColor clearColor];
         [self addSubview:myScrollView];
@@ -52,6 +53,8 @@
 }
 
 - (void)dealloc {
+    _dataSource = nil;
+    _delegate = nil;
     _selectBar = nil;
     self.yLables = nil;
     [self.barSet makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -224,6 +227,7 @@
 #pragma mark - public Method
 
 - (void)reloadData {
+    [myScrollView setContentOffset:CGPointZero];
 //    [self.barSet makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.yLables makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [myScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];

@@ -13,6 +13,7 @@
 		1B31CBE41B5F37D9007DA817 /* CDScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBE31B5F37D9007DA817 /* CDScrollView.m */; };
 		1B31CC481B5F92AF007DA817 /* CDCakeChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CC471B5F92AF007DA817 /* CDCakeChart.m */; };
 		1B31CC4B1B5F92D7007DA817 /* CakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CC4A1B5F92D7007DA817 /* CakeViewController.m */; };
+		1B31CC721B60BB68007DA817 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CC701B60BB68007DA817 /* CollectionViewCell.m */; };
 		1BD804381B575659002AD952 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD804371B575659002AD952 /* main.m */; };
 		1BD8043B1B575659002AD952 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8043A1B575659002AD952 /* AppDelegate.m */; };
 		1BD8043E1B575659002AD952 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8043D1B575659002AD952 /* ViewController.m */; };
@@ -55,6 +56,8 @@
 		1B31CC471B5F92AF007DA817 /* CDCakeChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDCakeChart.m; sourceTree = "<group>"; };
 		1B31CC491B5F92D7007DA817 /* CakeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CakeViewController.h; sourceTree = "<group>"; };
 		1B31CC4A1B5F92D7007DA817 /* CakeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CakeViewController.m; sourceTree = "<group>"; };
+		1B31CC6F1B60BB68007DA817 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		1B31CC701B60BB68007DA817 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		1BD804321B575659002AD952 /* ChartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD804361B575659002AD952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BD804371B575659002AD952 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -111,6 +114,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B31CC6D1B60BB39007DA817 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1B31CC6E1B60BB47007DA817 /* CollectionCell */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1B31CC6E1B60BB47007DA817 /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				1B31CC6F1B60BB68007DA817 /* CollectionViewCell.h */,
+				1B31CC701B60BB68007DA817 /* CollectionViewCell.m */,
+			);
+			name = CollectionCell;
+			sourceTree = "<group>";
+		};
 		1BD804291B575659002AD952 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +152,7 @@
 		1BD804341B575659002AD952 /* ChartDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1B31CC6D1B60BB39007DA817 /* View */,
 				1BD8045C1B57574E002AD952 /* Chart */,
 				1BD804391B575659002AD952 /* AppDelegate.h */,
 				1BD8043A1B575659002AD952 /* AppDelegate.m */,
@@ -351,6 +372,7 @@
 				1BD804921B591EBF002AD952 /* BarViewController1.m in Sources */,
 				1BD804761B577464002AD952 /* BasicViewController.m in Sources */,
 				1BD8047B1B5775E6002AD952 /* BarViewController.m in Sources */,
+				1B31CC721B60BB68007DA817 /* CollectionViewCell.m in Sources */,
 				1BD8047E1B5786EE002AD952 /* CDLabel.m in Sources */,
 				1B31CBE11B5DECD7007DA817 /* LineViewController.m in Sources */,
 				1BD804781B577464002AD952 /* LLViewController.m in Sources */,

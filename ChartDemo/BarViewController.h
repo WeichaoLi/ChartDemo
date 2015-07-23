@@ -8,6 +8,8 @@
 
 #import "BasicViewController.h"
 
-@interface BarViewController : BasicViewController
+@interface BarViewController : BasicViewController<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+@property (strong, nonatomic) UICollectionView *myCollectionView;
 
 @end
