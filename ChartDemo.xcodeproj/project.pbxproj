@@ -10,10 +10,12 @@
 		1B31CBDB1B5DDBB9007DA817 /* CDDot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBDA1B5DDBB9007DA817 /* CDDot.m */; };
 		1B31CBDE1B5DDBD0007DA817 /* CDLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBDD1B5DDBD0007DA817 /* CDLineChart.m */; };
 		1B31CBE11B5DECD7007DA817 /* LineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBE01B5DECD7007DA817 /* LineViewController.m */; };
-		1B31CBE41B5F37D9007DA817 /* CDScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CBE31B5F37D9007DA817 /* CDScrollView.m */; };
 		1B31CC481B5F92AF007DA817 /* CDCakeChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CC471B5F92AF007DA817 /* CDCakeChart.m */; };
 		1B31CC4B1B5F92D7007DA817 /* CakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CC4A1B5F92D7007DA817 /* CakeViewController.m */; };
 		1B31CC721B60BB68007DA817 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31CC701B60BB68007DA817 /* CollectionViewCell.m */; };
+		1BD3BC4F1B65DDE400790755 /* VBPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3BC4C1B65DDE400790755 /* VBPieChart.m */; };
+		1BD3BC501B65DDE400790755 /* VBPiePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3BC4E1B65DDE400790755 /* VBPiePiece.m */; };
+		1BD3BC531B65E45800790755 /* CDScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3BC521B65E45800790755 /* CDScrollView.m */; };
 		1BD804381B575659002AD952 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD804371B575659002AD952 /* main.m */; };
 		1BD8043B1B575659002AD952 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8043A1B575659002AD952 /* AppDelegate.m */; };
 		1BD8043E1B575659002AD952 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8043D1B575659002AD952 /* ViewController.m */; };
@@ -50,14 +52,18 @@
 		1B31CBDD1B5DDBD0007DA817 /* CDLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDLineChart.m; sourceTree = "<group>"; };
 		1B31CBDF1B5DECD7007DA817 /* LineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineViewController.h; sourceTree = "<group>"; };
 		1B31CBE01B5DECD7007DA817 /* LineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineViewController.m; sourceTree = "<group>"; };
-		1B31CBE31B5F37D9007DA817 /* CDScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDScrollView.m; sourceTree = "<group>"; };
-		1B31CBE51B5F3A86007DA817 /* CDScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDScrollView.h; sourceTree = "<group>"; };
 		1B31CC461B5F92AF007DA817 /* CDCakeChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDCakeChart.h; sourceTree = "<group>"; };
 		1B31CC471B5F92AF007DA817 /* CDCakeChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDCakeChart.m; sourceTree = "<group>"; };
 		1B31CC491B5F92D7007DA817 /* CakeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CakeViewController.h; sourceTree = "<group>"; };
 		1B31CC4A1B5F92D7007DA817 /* CakeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CakeViewController.m; sourceTree = "<group>"; };
 		1B31CC6F1B60BB68007DA817 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		1B31CC701B60BB68007DA817 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		1BD3BC4B1B65DDE400790755 /* VBPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBPieChart.h; sourceTree = "<group>"; };
+		1BD3BC4C1B65DDE400790755 /* VBPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBPieChart.m; sourceTree = "<group>"; };
+		1BD3BC4D1B65DDE400790755 /* VBPiePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBPiePiece.h; sourceTree = "<group>"; };
+		1BD3BC4E1B65DDE400790755 /* VBPiePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBPiePiece.m; sourceTree = "<group>"; };
+		1BD3BC511B65E45800790755 /* CDScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDScrollView.h; path = ChartDemo/Chart/CDScrollView.h; sourceTree = SOURCE_ROOT; };
+		1BD3BC521B65E45800790755 /* CDScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDScrollView.m; path = ChartDemo/Chart/CDScrollView.m; sourceTree = SOURCE_ROOT; };
 		1BD804321B575659002AD952 /* ChartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD804361B575659002AD952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BD804371B575659002AD952 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -213,8 +219,6 @@
 				1BD804671B5765EB002AD952 /* PopoverViewCompatibility.h */,
 				1BD8047C1B5786EE002AD952 /* CDLabel.h */,
 				1BD8047D1B5786EE002AD952 /* CDLabel.m */,
-				1B31CBE51B5F3A86007DA817 /* CDScrollView.h */,
-				1B31CBE31B5F37D9007DA817 /* CDScrollView.m */,
 				1BD8045D1B57574E002AD952 /* Bar */,
 				1BD8045E1B57574E002AD952 /* Cake */,
 				1BD8045F1B57574E002AD952 /* Line */,
@@ -229,6 +233,8 @@
 				1BD8046A1B5772D5002AD952 /* CDBar.m */,
 				1BD8046C1B577311002AD952 /* CDBarChart.h */,
 				1BD8046D1B577311002AD952 /* CDBarChart.m */,
+				1BD3BC511B65E45800790755 /* CDScrollView.h */,
+				1BD3BC521B65E45800790755 /* CDScrollView.m */,
 			);
 			path = Bar;
 			sourceTree = "<group>";
@@ -236,6 +242,10 @@
 		1BD8045E1B57574E002AD952 /* Cake */ = {
 			isa = PBXGroup;
 			children = (
+				1BD3BC4B1B65DDE400790755 /* VBPieChart.h */,
+				1BD3BC4C1B65DDE400790755 /* VBPieChart.m */,
+				1BD3BC4D1B65DDE400790755 /* VBPiePiece.h */,
+				1BD3BC4E1B65DDE400790755 /* VBPiePiece.m */,
 				1B31CC461B5F92AF007DA817 /* CDCakeChart.h */,
 				1B31CC471B5F92AF007DA817 /* CDCakeChart.m */,
 			);
@@ -376,9 +386,11 @@
 				1BD8047E1B5786EE002AD952 /* CDLabel.m in Sources */,
 				1B31CBE11B5DECD7007DA817 /* LineViewController.m in Sources */,
 				1BD804781B577464002AD952 /* LLViewController.m in Sources */,
+				1BD3BC531B65E45800790755 /* CDScrollView.m in Sources */,
 				1B31CC4B1B5F92D7007DA817 /* CakeViewController.m in Sources */,
+				1BD3BC501B65DDE400790755 /* VBPiePiece.m in Sources */,
+				1BD3BC4F1B65DDE400790755 /* VBPieChart.m in Sources */,
 				1BD8046B1B5772D5002AD952 /* CDBar.m in Sources */,
-				1B31CBE41B5F37D9007DA817 /* CDScrollView.m in Sources */,
 				1B31CBDE1B5DDBD0007DA817 /* CDLineChart.m in Sources */,
 				1BD8043E1B575659002AD952 /* ViewController.m in Sources */,
 				1BD804681B5765EB002AD952 /* PopoverView.m in Sources */,

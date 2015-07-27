@@ -77,8 +77,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
 
-    NSInteger index = CGRectGetMidX(cell.frame)  / CGRectGetWidth(cell.frame);
-    CD_NSLog(@"^^^^^^^^%d",index);
+//    NSInteger index = CGRectGetMidX(cell.frame)  / CGRectGetWidth(cell.frame);
+//    CD_NSLog(@"^^^^^^^^%d",index);
     
     if (!cell.barChart) {
         cell.barChart = [[CDBarChart alloc] initWithFrame:cell.bounds WithType:DidSelectTypeTouch];
