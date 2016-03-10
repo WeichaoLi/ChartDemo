@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>0B7A65E2-F1A6-402D-A8E9-BED5EE5C3ADB</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>ChartDemo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>8FFC086225862B43FBCDD26088A1479E4458FC64</key>
 		<string>https://github.com/WeichaoLi/ChartDemo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ChartDemo.xcodeproj/project.xcworkspace</string>
+	<string>ChartDemo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>8FFC086225862B43FBCDD26088A1479E4458FC64</key>
